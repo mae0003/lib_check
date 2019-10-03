@@ -1,0 +1,60 @@
+project(':sample') {
+    apply plugin: "war"
+    apply plugin: 'eclipse-wtp'
+    dependencies {
+        providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+        providedCompile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+
+        compile 'org.apache.lucene:lucene-queries:5.3.0'
+        compile 'org.apache.lucene:lucene-analyzers-common:5.3.0'
+        compile ':cql-java:1.12'
+        compile ':unlaxer-common:'
+        compile 'net.arnx:jsonic:+'
+        compile 'org.slf4j:slf4j-api:1.7.12'
+        compile 'org.slf4j:jcl-over-slf4j:1.7.12'
+        compile 'org.slf4j:log4j-over-slf4j:1.7.12'
+        compile 'ch.qos.logback:logback-classic:1.1.3'
+        compile 'org.apache.httpcomponents:httpclient:4.5.1'
+        compile 'org.apache.httpcomponents:httpclient-cache:4.5.1'
+        compile 'org.eclipse.jetty:jetty-webapp:9.4.8.v20171121'
+        compile 'org.glassfish.jersey.core:jersey-server:2.21'
+        compile 'org.glassfish.jersey.containers:jersey-container-jetty-http:2.21'
+        compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.21'
+        compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.21'
+        compile 'asm:asm-all:3.3.1'
+        compile 'javax.validation:validation-api:1.1.0.Final'
+        compile 'org.apache.solr:solr-solrj:5.3.0'
+        compile 'org.apache.commons:commons-lang3:3.1'
+        compile 'org.apache.commons:commons-csv:1.2'
+        compile 'org.jsoup:jsoup:1.7.2'
+        compile 'com.whalin:Memcached-Java-Client:3.0.2'
+        compile 'org.apache.velocity:velocity:1.7'
+        compile 'com.google.guava:guava:19.0'
+        compile 'joda-time:joda-time:2.9.2'
+        compile 'org.postgresql:postgresql:9.4.1207.jre7'
+        testCompile "junit:junit:4.11"
+        testCompile 'org.hamcrest:hamcrest-all:1.3'
+        testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:2.21'
+        testCompile 'org.powermock:powermock-module-junit4:1.6.6'
+        testCompile 'org.powermock:powermock-api-mockito:1.6.6'
+        testCompile 'org.seleniumhq.selenium:selenium-java:3.4.0'
+        testCompile 'net.lightbody.bmp:browsermob-core:2.1.5'
+        testCompile 'org.yaml:snakeyaml:1.18'
+    }
+}
+
+project(':sample2') {
+    apply plugin: "war"
+    dependencies {
+        providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+        providedCompile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+        compile project(':shared')
+        compile 'org.eclipse.jetty.aggregate:jetty-all-server:8.1.19.v20160209'
+        compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.21'
+        compile 'org.apache.httpcomponents:httpclient:4.5.1'
+        compile 'org.postgresql:postgresql:9.4.1207.jre7'
+        compile 'org.apache.solr:solr-solrj:5.3.0'
+    }
+    apply plugin: 'application'
+    mainClassName = 'jp.go.ndl.pilot.server.ServerLauncher'
+}
