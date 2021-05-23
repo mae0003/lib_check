@@ -43,6 +43,7 @@ project(':sample') {
     }
 }
 
+# aaaa
 project(':sample2') {
     apply plugin: "war"
     dependencies {
